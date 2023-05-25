@@ -17,7 +17,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='p10k-edit',
-    version='0.0.11',
+    version='0.0.12',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Tool to Edit PowerLevel10k p10k.zsh Config File (work-in-progress)',
@@ -25,7 +25,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/kkatayama/p10k-edit',
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclued=("tests",)),
+    install_requires=["iterm2", "psutil", "pyobjc", "rich"],
     entry_points={
         'console_scripts': [
             'p10k-edit=p10k_edit.bin.__main__:main'
@@ -38,5 +39,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires=required,
 )
