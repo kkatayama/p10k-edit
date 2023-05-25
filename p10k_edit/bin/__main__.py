@@ -111,7 +111,7 @@ def setup():
     cwd = Path.home().joinpath("Library", "Application Support")
     if shutil.get_terminal_size().columns >= 96:
         os.chdir(cwd)
-    elif shutil.get_terminal_size().columns >= 76::
+    elif shutil.get_terminal_size().columns >= 76:
         cwd = Path.home().joinpath("Library")
         os.chdir(cwd)
     else:

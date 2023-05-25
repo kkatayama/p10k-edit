@@ -15,7 +15,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='p10k-edit',
-    version='0.0.4',
+    version='0.0.5',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Tool to Edit PowerLevel10k p10k.zsh Config File (work-in-progress)',
