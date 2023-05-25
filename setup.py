@@ -7,17 +7,13 @@ import setuptools
 CWD = pathlib.Path(__file__).parent
 README = (CWD / "README.md").read_text()
 LICENSE = (CWD / "LICENSE").read_text()
-# REQUIRED = (CWD / "requirements.txt").read_text().splitlines()
-
-with open("requirements.txt") as f:
-    required = f.read().splitlines()
 
 with open('README.md') as f:
     long_description = f.read()
 
 setuptools.setup(
     name='p10k-edit',
-    version='0.0.12',
+    version='0.0.13',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Tool to Edit PowerLevel10k p10k.zsh Config File (work-in-progress)',
@@ -25,7 +21,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/kkatayama/p10k-edit',
-    packages=setuptools.find_packages(exclued=("tests",)),
+    packages=setuptools.find_packages(exclude=("tests",)),
     install_requires=["iterm2", "psutil", "pyobjc", "rich"],
     entry_points={
         'console_scripts': [
