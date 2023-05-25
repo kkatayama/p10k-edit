@@ -5,17 +5,16 @@ import pathlib
 import setuptools
 
 CWD = pathlib.Path(__file__).parent
-
 README = (CWD / "README.md").read_text()
-
 LICENSE = (CWD / "LICENSE").read_text()
+REQUIRED = (CWD / "requirements.txt").read_text()
 
 with open('README.md') as f:
     long_description = f.read()
 
 setuptools.setup(
     name='p10k-edit',
-    version='0.0.7',
+    version='0.0.8',
     author='Teddy Katayama',
     author_email='katayama@udel.edu',
     description='Tool to Edit PowerLevel10k p10k.zsh Config File (work-in-progress)',
@@ -36,4 +35,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=REQUIRED,
 )
