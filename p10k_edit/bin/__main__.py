@@ -597,7 +597,16 @@ def selectColor(bold=False):
     return col, row, color
 
 
-if __name__ == '__main__':
+def main():
+    global c
+    global left
+    global right
+    global middle
+    global b_left
+    global b_right
+    global prompt
+    global item
+
     c = Console()
     old, cwd = setup()
     parent = '/' if cwd.parent == cwd.home() else f'/{cwd.parent.relative_to(cwd.home())}/'
@@ -633,3 +642,7 @@ if __name__ == '__main__':
 
     # -- Spawn New Shell
     exit(spawnShell())
+
+
+if __name__ == '__main__':
+    main()
