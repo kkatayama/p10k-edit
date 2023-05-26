@@ -276,7 +276,7 @@ def updateSetting(item='', color=-1, save=True):
         key = "POWERLEVEL9K_RAM_FOREGROUND"
     if item == "l_ram_icon":
         key = "POWERLEVEL9K_RAM_FOREGROUND"
-    if item == "gap_char":
+    if item == "m_gap_char":
         key = "POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND"
     if item == "r_background":
         key = "POWERLEVEL9K_BACKGROUND"
@@ -389,8 +389,8 @@ def getTime(seconds):
 
 def extractMiddle(width, num_gaps=0):
     num_gaps = num_gaps if num_gaps else (width - len(escape_ansi(left)) - len(escape_ansi(right)) - 4)
-    globals()["gap_char"] = wrap((gap_char*num_gaps), fg=prompt_gap_fg)
-    return combineParts(gap_char, end)
+    globals()["m_gap_char"] = wrap((gap_char*num_gaps), fg=prompt_gap_fg)
+    return combineParts(m_gap_char, end)
 
 def extractRight(seconds):
     exec_time = getTime(seconds)
@@ -517,7 +517,7 @@ def selectItem(row, segment, width=None):
     if row == 0:        # -- Left Prompt Items
         items = ["l_background", "l_os", "l_sep", "l_icon", "l_home", "l_parent", "l_anchor", "l_ram", "l_ram_icon"]
     if row == 1:        # -- Middle Prompt Items
-        items = ["gap_char"]
+        items = ["m_gap_char"]
     if row == 2:        # -- Right Prompt Items
         items = ["r_background", "r_e_prefix", "r_e_time", "r_e_icon", "r_sep", "r_c_prefix", "r_c_time", "r_c_icon", "r_battery", "r_battery_icon", "r_battery_charging", "r_battery_low", "r_battery_disc"]
     if row == 3:        # -- Bottom Left Items
@@ -625,6 +625,9 @@ def main():
 
     # -- Select Prompt Segment (left, middle, right, b_left)
     # row = selectRow(left, middle, right, b_left, b_right, title="What segment do you want to modify?")
+    right_size, left_size = len(escape_ansi(right)), len(escape_ansi(left))
+    num_gaps = int((len(escape_ansi(left)) + len(escape_ansi(right))) / 2)
+    middle = extractMiddle(width=shutil.get_terminal_size().columns, num_gaps=num_gaps)
     row, width = selectRow(left, middle, right, b_left, title="What segment do you want to modify?")
     segment = prompt[row]
     printSegment(row, segment)
