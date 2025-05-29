@@ -180,6 +180,7 @@ def getParams():
         return [key]
 
     def keepUnicode(val):
+        val = re.sub(r'\\U([0-9A-F]{5})', r'\\U' + str(rf'\1').rjust(5, '0'), val)
         val = re.sub(r'\%([0-9]{3})F', '\x1b[38;5;' + r'\1m', val)
         return eval(val) if ((r'\u' in val) or (r"'" in val) or (val.isdigit())) else val
         #return re.sub(r'\%([0-9]{3})F', '\x1b[38;5;' + r'\1m', val)
